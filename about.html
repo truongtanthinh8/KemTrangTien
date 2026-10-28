@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu – Kem Tràng Tiền</title>
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="about">
+    <div id="site-header"></div>
+    <section class="ab-hero"><div class="container">
+        <h1>VỀ KEM TRÀNG TIỀN</h1>
+        <p>“Phi thực Kem Tràng Tiền bất thành người Hà Nội”</p>
+    </div></section>
+    <div class="container">
+        <section class="ab-story">
+            <div class="ab-text">
+                <h2>Câu chuyện thương hiệu</h2>
+                <p>Kem Tràng Tiền thành lập năm 1958. Tên gọi cũng chính là nơi đầu tiên kem được bán và sản xuất - “Tràng Tiền”.</p>
+                <p>Từ đó tới nay, qua bao thăng trầm cùng sự phát triển của thời đại, Kem Tràng Tiền vẫn đang tồn tại và tiếp tục phát triển tại số 35 Tràng Tiền, quận Hoàn Kiếm, Thành phố Hà Nội.</p>
+                <p>Đi qua bao năm tháng, Kem Tràng Tiền đã trở thành biểu tượng gắn liền với ký ức của những người con hướng về Hà Nội.</p>
+                <a class="sc-btn" href="category.html">Khám phá sản phẩm</a>
+            </div>
+            <div class="ab-pic"><img src="images/ref_hinh2.png" alt="Phác họa cửa hàng Kem Tràng Tiền"></div>
+        </section>
+        <h2 class="ab-h2">Video giới thiệu</h2>
+        <div class="ab-video">
+            <video controls preload="metadata" poster="images/anhvideo.png">
+                <source src="videos/gioi-thieu.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
+        </div>
+        <h2 class="ab-h2">Các dòng sản phẩm</h2>
+        <div class="ab-cats" id="abCats"></div>
+    </div>
+    <div id="site-footer"></div>
+    <script src="js/product.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        // 4 dòng sản phẩm lấy từ dữ liệu chung: ảnh đại diện = sản phẩm đầu tiên của mỗi danh mục
+        document.getElementById("abCats").innerHTML = danhmuc.map(function (t, i) {
+            var p = ds.find(function (x) { return x.loai === loaiKey[i]; });
+            return '<a href="category.html?loai=' + loaiKey[i] + '"><img src="images/' + p.hinh + '" alt="' + t + '"><span>' + t + '</span></a>';
+        }).join("");
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kem Tràng Tiền – Kem que, kem ốc quế, kem hộp, kem tươi</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="index">
+    <!-- KHUNG ĐĂNG NHẬP -->
+    <div id="login" class="auth-box">
+        <button type="button" class="close-login" aria-label="Đóng">&times;</button>
+        <h2>ĐĂNG NHẬP</h2>
+        <form id="formlogin">
+            <div class="auth-group">
+                <label for="user">Tài khoản</label>
+                <input type="text" id="user" placeholder="Nhập tài khoản" required>
+            </div>
+
+            <div class="auth-group">
+                <label for="pass">Mật khẩu</label>
+                <input type="password" id="pass" placeholder="Nhập mật khẩu" required>
+            </div>
+
+            <div class="auth-buttons">
+                <button type="submit" class="auth-btn">Đăng nhập</button>
+                <button type="button" id="openRegister" class="auth-btn auth-btn-light">
+                    Đăng ký
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- KHUNG ĐĂNG KÝ -->
+    <div id="register" class="auth-box">
+        <button type="button" class="close-login" aria-label="Đóng">&times;</button>
+
+        <h2>ĐĂNG KÝ</h2>
+
+        <form id="formregister">
+            <div class="auth-group">
+                <label for="regUser">Tài khoản</label>
+                <input type="text" id="regUser" placeholder="Nhập tài khoản" required>
+            </div>
+            <div class="auth-group">
+                <label for="regPass">Mật khẩu</label>
+                <input type="password" id="regPass" placeholder="Nhập mật khẩu" required>
+            </div>
+
+            <div class="auth-group">
+                <label for="regPass2">Nhập lại mật khẩu</label>
+                <input type="password" id="regPass2" placeholder="Nhập lại mật khẩu" required>
+            </div>
+
+            <div class="auth-group">
+                <label for="regEmail">Email</label>
+                <input type="email" id="regEmail" placeholder="example@gmail.com" required>
+            </div>
+
+            <div class="auth-group">
+                <label for="regPhone">Số điện thoại</label>
+                <input type="tel" id="regPhone" placeholder="Nhập số điện thoại"
+                    pattern="[0-9]{10,11}" title="Số điện thoại gồm 10 hoặc 11 chữ số" required>
+            </div>
+
+            <div class="auth-buttons">
+                <button type="submit" class="auth-btn">Đăng ký</button>
+                <button type="button" id="backLogin" class="auth-btn auth-btn-light">
+                    Đăng nhập
+                </button>
+            </div>
+        </form>
+    </div>
+    <div id="site-header"></div>
+    <div class="row">
+        <div class="banner-1">
+            <img src="images/banner1.png" alt="Banner Kem Tràng Tiền" id="banner">
+            <button type="button" class="btn-left" onclick="left()" aria-label="Banner trước">&#10094;</button>
+            <button type="button" class="btn-right" onclick="right()" aria-label="Banner sau">&#10095;</button>
+            <div class="btn"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <h1>TẤT CẢ SẢN PHẨM</h1>
+        </div>
+        <div class="row" id="show"></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <h1>SẢN PHẨM KEM QUE</h1>
+        </div>
+        <div class="row" id="kemque"></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <h1>SẢN PHẨM KEM ỐC QUẾ</h1>
+        </div>
+        <div class="row" id="kemocque"></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <h1>SẢN PHẨM KEM TƯƠI </h1>
+        </div>
+        <div class="row" id="kemtuoi"></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <h1>SẢN PHẨM KEM HỘP </h1>
+        </div>
+        <div class="row" id="kemhop"></div>
+    </div>
+    <div id="site-footer"></div>
+
+    <script src="js/product.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+
+    <!-- Thư viện jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+        if (new URLSearchParams(location.search).get("login") === "1") { $("#login").css("display", "block"); }
+        // Click biểu tượng user
+        $("#btnLogin").click(function (e) {
+            e.preventDefault();
+
+            if ($("#login").is(":visible")) {
+                $("#login").hide();
+            } else {
+                $("#register").hide();
+                $("#login").css("display", "block");
+            }
+        });
+
+        // Đóng khung bằng dấu X
+        $(".close-login").click(function () {
+            $("#login, #register").hide();
+        });
+
+        // Chuyển sang khung đăng ký
+        $("#openRegister").click(function () {
+            $("#login").hide();
+            $("#register").css("display", "block");
+        });
+
+        // Quay lại khung đăng nhập
+        $("#backLogin").click(function () {
+            $("#register").hide();
+            $("#login").css("display", "block");
+        });
+
+        // Kiểm tra đăng nhập
+        $("#formlogin").submit(function (e) {
+            e.preventDefault();
+
+            let user = $("#user").val().trim();
+            let pass = $("#pass").val();
+
+            if (user == "admin" && pass == "123456") {
+                alert("Đăng nhập thành công!");
+
+                $("#login, #register").hide();
+                $("#user, #pass").val("");
+            } else {
+                alert("Đăng nhập thất bại! Vui lòng nhập lại.");
+                $("#pass").val("");
+                $("#pass").focus();
+            }
+        });
+
+        // Kiểm tra đăng ký
+        $("#formregister").submit(function (e) {
+            e.preventDefault();
+
+            let user = $("#regUser").val().trim();
+            let pass = $("#regPass").val();
+            let pass2 = $("#regPass2").val();
+            let email = $("#regEmail").val().trim();
+            let phone = $("#regPhone").val().trim();
+
+            if (pass !== pass2) {
+                alert("Mật khẩu nhập lại không khớp!");
+                $("#regPass2").val("").focus();
+                return;
+            }
+
+            alert(
+                "Kiểm tra đăng ký thành công!\n" +
+                "Tài khoản: " + user +
+                "\nEmail: " + email +
+                "\nSố điện thoại: " + phone
+            );
+
+            // Đóng khung sau khi kiểm tra
+            $("#register").hide();
+            $("#formregister")[0].reset();
+        });
+
+        });
+
+    </script>
+
+</body>
+</html>
