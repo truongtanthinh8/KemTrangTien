@@ -79,7 +79,7 @@
             <img src="images/banner1.png" alt="Banner Kem Tràng Tiền" id="banner">
             <button type="button" class="btn-left" onclick="left()" aria-label="Banner trước">&#10094;</button>
             <button type="button" class="btn-right" onclick="right()" aria-label="Banner sau">&#10095;</button>
-            <div class="btn"></div>
+            <div class="btn" id="dots"></div>
         </div>
     </div>
     <div class="container">
@@ -115,6 +115,7 @@
     <div id="site-footer"></div>
 
     <script src="js/product.js"></script>
+    <script>let trang = "index";</script>
     <script src="js/common.js"></script>
     <script src="js/index.js"></script>
 
@@ -123,7 +124,8 @@
 
     <script>
         $(document).ready(function () {
-        if (new URLSearchParams(location.search).get("login") === "1") { $("#login").css("display", "block"); }
+        let u = new URL(window.location.href);
+        if (u.searchParams.get("login") == "1") { $("#login").css("display", "block"); }
         // Click biểu tượng user
         $("#btnLogin").click(function (e) {
             e.preventDefault();

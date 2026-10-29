@@ -19,10 +19,10 @@
                 <p class="pd-price" id="giaSP"></p>
                 <p class="pd-desc" id="moTaSP"></p>
                 <div class="pd-qty"><span>Số lượng</span>
-                    <div class="qty"><button type="button" id="slTru" aria-label="Giảm">−</button>
-                        <input type="number" id="soLuong" value="1" min="1" max="99" aria-label="Số lượng">
-                        <button type="button" id="slCong" aria-label="Tăng">+</button></div></div>
-                <button type="button" class="sc-btn" id="btnAddCart">THÊM VÀO GIỎ HÀNG</button>
+                    <div class="qty"><button type="button" onclick="doiSoLuong(-1)">−</button>
+                        <input type="number" id="soLuong" value="1" min="1" max="99" onchange="doiSoLuong(0)">
+                        <button type="button" onclick="doiSoLuong(1)">+</button></div></div>
+                <button type="button" class="sc-btn" id="btnAddCart" onclick="themVaoGio()">THÊM VÀO GIỎ HÀNG</button>
                 <p id="addMsg" class="pd-msg" role="status"></p>
             </div>
         </div>
@@ -33,6 +33,7 @@
     </div>
     <div id="site-footer"></div>
     <script src="js/product.js"></script>
+    <script>let trang = "detail";</script>
     <script src="js/common.js"></script>
     <script src="js/detail.js"></script>
 </body>

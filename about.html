@@ -36,13 +36,15 @@
     </div>
     <div id="site-footer"></div>
     <script src="js/product.js"></script>
+    <script>let trang = "about";</script>
     <script src="js/common.js"></script>
     <script>
         // 4 dòng sản phẩm lấy từ dữ liệu chung: ảnh đại diện = sản phẩm đầu tiên của mỗi danh mục
-        document.getElementById("abCats").innerHTML = danhmuc.map(function (t, i) {
-            var p = ds.find(function (x) { return x.loai === loaiKey[i]; });
-            return '<a href="category.html?loai=' + loaiKey[i] + '"><img src="images/' + p.hinh + '" alt="' + t + '"><span>' + t + '</span></a>';
-        }).join("");
+        for (let i = 0; i < danhmuc.length; i++) {
+            let p = ds.find(a => a.loai == loaiKey[i]);
+            document.getElementById("abCats").innerHTML +=
+                `<a href="category.html?loai=${loaiKey[i]}"><img src="images/${p.hinh}" alt="${danhmuc[i]}"><span>${danhmuc[i]}</span></a>`;
+        }
     </script>
 </body>
 </html>
