@@ -1,0 +1,383 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.container{
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.search{
+    width: 250px;
+    height: 40px;
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.search input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding: 0 15px;
+    font-size: 14px;
+}
+
+.search button{
+    width: 45px;
+    height: 100%;
+    border: none;
+    background-color: #10a049;
+    color: white;
+    cursor: pointer;
+}
+
+.search button:hover{
+    background-color: #08833a;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.banner-1 img{
+    width: 100%;
+    height: 100%;
+}
+
+.banner-1{
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.btn-left{
+    position: absolute;
+    top: 45%;
+    left: 4px;
+    color: #88ffb7;
+    padding: 8px;
+    font-size: 36px;
+}
+
+.btn-right{
+    position: absolute;
+    top: 45%;
+    right: 4px;
+    color: #88ffb7;
+    padding: 8px;
+    font-size: 36px;
+}
+
+.btn{
+    width: 140px;
+    height: 36px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: -4px;
+    left: calc(50% - 100px);
+}
+
+.btn1{
+    width: 16px;
+    height: 16px;
+    background-color: #88ffb7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn1:hover{
+    background-color: blue;
+    cursor: pointer;
+}
+
+.btn2{
+    width: 16px;
+    height: 16px;
+    background-color: #88ffb7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn3{
+    width: 16px;
+    height: 16px;
+    background-color: #88ffb7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col3{
+    position: relative;
+    width: calc(25% - 10px);
+    height: 444px;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 24px;
+    margin: 4px;
+    text-align: center;
+}
+.km{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: #a10000;
+    width: 72px;
+    line-height: 30px;
+    font-size: 20px;
+    border-radius: 0px 24px 0px 12px;
+    color: white;
+}
+
+.h2, h3, p{
+    margin: 4px;
+}
+
+
+.col3 button{
+    color: white;
+    background-color: #10a049;
+    border: none;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.col3 img{
+    width: 100%;
+    height: 276px;
+    margin: 30px 0px 0px 0px;
+}
+
+.col4{  
+    width: calc(33.33% - 10px);
+    height: 350px;
+    border: 1px solid red;
+    margin: 5px;
+}
+
+
+footer{
+    width: 100%;
+    height: 250px;
+    background-color: aqua;
+}
+
+.menu ul{
+    display: flex;
+
+}
+
+.menu li{
+    list-style: none;
+    padding:10px;
+}
+
+.menu ul li{
+    position: relative;
+
+}
+
+.menu ul ul{
+    display: none;
+
+}
+
+.menu ul li:hover ul{
+    background-color: #92ffbd;
+    display: block;
+    position: absolute;
+    top: 40px;
+    width: 120px;
+    padding: 0%;
+    margin: 0%;
+}
+
+.m3 button:hover{
+    cursor: pointer;
+
+}
+
+
+/* Khung đăng nhập và đăng ký */
+.auth-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-width: calc(100% - 30px);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #d8e4d9;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+    z-index: 1001;
+    box-sizing: border-box;
+}
+
+/* Tiêu đề */
+.auth-box h2 {
+    text-align: center;
+    color: black;
+    font-size: 24px;
+    margin: 5px 0 25px;
+}
+
+/* Nút X */
+.close-login {
+    position: absolute;
+    top: 10px;
+    right: 13px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #555555;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-login:hover {
+    background: #e53935;
+    color: white;
+}
+
+/* Nhóm nhãn và ô nhập */
+.auth-group {
+    margin-bottom: 17px;
+}
+
+.auth-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.auth-group input {
+    display: block;
+    width: 100%;
+    height: 44px;
+    padding: 0 13px;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    outline: none;
+    background: #f4f5f4;
+    color: #333333;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+/* Chữ gợi ý màu xám mờ */
+.auth-group input::placeholder {
+    color: #a0a0a0;
+    opacity: 1;
+}
+
+/* Khi bấm vào ô nhập */
+.auth-group input:focus {
+    border-color: #10a049;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(16, 160, 73, 0.10);
+}
+
+/* Hai nút có kích thước bằng nhau */
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.auth-btn {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    padding: 0 8px;
+    border: 1px solid #10a049;
+    border-radius: 8px;
+    background: #10a049;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.auth-btn:hover {
+    background: #08833a;
+    border-color: #08833a;
+}
+
+.auth-btn-light {
+    background: white;
+    color: #10a049;
+}
+
+.auth-btn-light:hover {
+    background: #edf8f0;
+    color: #08833a;
+    border-color: #08833a;
+}
+
+/* Điện thoại */
+@media (max-width: 480px) {
+    .auth-box {
+        padding: 25px 20px;
+    }
+
+    .auth-box h2 {
+        font-size: 21px;
+    }
+}
+
+
+/* #login{
+    width: 400px;
+    min-height: 300px;
+    position: fixed;
+    top: 120px;
+    left: calc(50% - 200px);
+    z-index: 1001;
+    background-color: white;
+    padding: 20px;
+    display: none;
+}
+
+
+.gr input{
+    width: 100%;
+    padding: 6px;
+    margin: 4px 0px 24px 0px;
+
+}
+
+.gr button{
+    text-align: center;
+    margin: 16px 40px;
+    padding: 20px 10px;
+} */
