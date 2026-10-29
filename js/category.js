@@ -1,22 +1,46 @@
-/* TRANG DANH MỤC DÙNG CHUNG: category.html?loai=kemque|kemocque|kemhop|kemtuoi  (bỏ trống = tất cả)
-   Tìm kiếm: category.html?q=từ khóa */
-(function () {
-    let params = new URLSearchParams(window.location.search);
-    let loai = params.get("loai") || "";
-    let q = (params.get("q") || "").trim();
-    if (loai && loaiKey.indexOf(loai) < 0) loai = "";           // mã lạ -> hiển thị tất cả
+/* TRANG DANH MỤC DÙNG CHUNG: category.html?loai=kemque|kemocque|kemhop|kemtuoi  (bỏ trống = tất cả) */
+let url = new URL(window.location.href);
+let loai = url.searchParams.get("loai");
+if (loai == null) {
+    loai = "";
+}
 
-    let tabs = `<a href="category.html" class="${!loai ? "on" : ""}">Tất cả</a>` +
-        danhmuc.map((t, i) => `<a href="category.html?loai=${loaiKey[i]}" class="${loai === loaiKey[i] ? "on" : ""}">${t}</a>`).join("");
-    document.getElementById("catTabs").innerHTML = tabs;
+// loai không nằm trong danh sách thì xem như "tất cả"
+let hopLe = false;
+for (let i = 0; i < loaiKey.length; i++) {
+    if (loaiKey[i] == loai) {
+        hopLe = true;
+    }
+}
+if (hopLe == false) {
+    loai = "";
+}
 
-    let list = ds.filter(p => (!loai || p.loai === loai) &&
-        (!q || p.ten.toLowerCase().includes(q.toLowerCase())));
-    let tieude = q ? `Kết quả cho “${q}”` : (loai ? "Sản phẩm " + tenLoai(loai) : "Tất cả sản phẩm");
-    document.getElementById("catTitle").textContent = tieude.toUpperCase();
-    document.getElementById("catCount").textContent = list.length + " sản phẩm";
-    document.title = tieude + " – Kem Tràng Tiền";
-    document.getElementById("catList").innerHTML = list.length
-        ? list.map(p => cardHTML(p)).join("")
-        : `<div class="empty-state"><h2>Không có sản phẩm phù hợp</h2><a class="sc-btn" href="category.html">Xem tất cả sản phẩm</a></div>`;
-})();
+// các nút chọn danh mục (tab)
+let tieude = "Tất cả sản phẩm";
+let tabs = "";
+if (loai == "") {
+    tabs += `<a href="category.html" class="on">Tất cả</a>`;
+} else {
+    tabs += `<a href="category.html">Tất cả</a>`;
+}
+for (let i = 0; i < danhmuc.length; i++) {
+    if (loai == loaiKey[i]) {
+        tabs += `<a href="category.html?loai=${loaiKey[i]}" class="on">${danhmuc[i]}</a>`;
+        tieude = "Sản phẩm " + danhmuc[i];
+    } else {
+        tabs += `<a href="category.html?loai=${loaiKey[i]}">${danhmuc[i]}</a>`;
+    }
+}
+document.getElementById("catTabs").innerHTML = tabs;
+
+// hiển thị sản phẩm đúng danh mục
+let dem = 0;
+for (let i = 0; i < ds.length; i++) {
+    if (loai == "" || ds[i].loai == loai) {
+        document.getElementById("catList").innerHTML += cardHTML(ds[i]);
+        dem++;
+    }
+}
+document.getElementById("catTitle").innerText = tieude.toUpperCase();
+document.getElementById("catCount").innerText = dem + " sản phẩm";
